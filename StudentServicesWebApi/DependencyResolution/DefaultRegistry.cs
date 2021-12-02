@@ -18,19 +18,19 @@
 namespace StudentServicesWebApi.DependencyResolution {
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
-	
+    using StudentServicesWebApi.Data;
+    using StudentServicesWebApi.Data.Interfaces;
+    using StudentServicesWebApi.Data.Repositories;
+
     public class DefaultRegistry : Registry {
-        #region Constructors and Destructors
-
-        public DefaultRegistry() {
-            Scan(
-                scan => {
-                    scan.TheCallingAssembly();
-                    scan.WithDefaultConventions();
-                });
-            //For<IExample>().Use<Example>();
+        public DefaultRegistry()
+        {
+            Scan(scan =>
+            {
+                scan.TheCallingAssembly();
+                scan.WithDefaultConventions();
+            });
+            For<IStudentRepository>().Use<StudentDatabase>();
         }
-
-        #endregion
     }
 }
