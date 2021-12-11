@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
+using StudentServicesWebApi.App_Start;
 
 namespace StudentServicesWebApi
 {
@@ -14,6 +15,7 @@ namespace StudentServicesWebApi
         {
             config.EnableCors();
             // Web API configuration and services
+            StructuremapWebApi.Start();
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
